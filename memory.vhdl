@@ -19,7 +19,7 @@ entity memory is
     data_out : out std_logic_vector((data_width * 4) - 1 downto 0)
   );
 end entity;
-architecture rtl of memory is
+architecture dataflow of memory is
 
 begin
 

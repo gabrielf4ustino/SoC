@@ -15,7 +15,7 @@ entity codec is
     codec_data_out : out std_logic_vector(7 downto 0)
   );
 end entity;
-architecture rtl of codec is
+architecture dataflow of codec is
 
 begin
 
