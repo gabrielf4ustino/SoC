@@ -25,15 +25,15 @@ architecture dataflow of memory is
   signal integer0, integer1, integer2, integer3 : integer;
 begin
   
-  integer0 <= to_integer(signed(data_addr));
-  integer1 <= to_integer(signed(data_addr)) + 1;
-  integer2 <= to_integer(signed(data_addr)) + 2;
-  integer3 <= to_integer(signed(data_addr)) + 3;
+  integer0 <= to_integer(unsigned(data_addr));
+  integer1 <= to_integer(unsigned(data_addr)) + 1;
+  integer2 <= to_integer(unsigned(data_addr)) + 2;
+  integer3 <= to_integer(unsigned(data_addr)) + 3;
   
-  data_aux0 <= std_logic_vector(to_signed(integer0, data_width));
-  data_aux1 <= std_logic_vector(to_signed(integer1, data_width));
-  data_aux2 <= std_logic_vector(to_signed(integer2, data_width));
-  data_aux3 <= std_logic_vector(to_signed(integer3, data_width));
+  data_aux0 <= std_logic_vector(to_unsigned(integer0, data_width));
+  data_aux1 <= std_logic_vector(to_unsigned(integer1, data_width));
+  data_aux2 <= std_logic_vector(to_unsigned(integer2, data_width));
+  data_aux3 <= std_logic_vector(to_unsigned(integer3, data_width));
 
   data_out((data_width*4) - 1 downto (data_width*3)) <= data_aux3;
   data_out((data_width*3) - 1 downto (data_width*2)) <= data_aux2;
