@@ -29,8 +29,7 @@ begin
     if falling_edge(clock) then
       if (data_write = '1') then
         mem_single_port(to_integer(unsigned(data_addr))) <= data_in;
-      end if;
-      if (data_read = '1') then
+      elsif (data_read = '1') then
         data_out <= mem_single_port(to_integer(unsigned(data_addr)))
           & mem_single_port(to_integer(shift_right(unsigned(data_addr), 1)))
           & mem_single_port(to_integer(shift_right(unsigned(data_addr), 2)))

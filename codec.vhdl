@@ -16,9 +16,19 @@ entity codec is
   );
 end entity;
 architecture dataflow of codec is
-
+  signal signal_aux : std_logic_vector(7 downto 0);
 begin
-
-    
-
+  process (interrupt)
+  begin
+    valid <= '0';
+    if rising_edge(interrupt) then
+      if read_signal = '0' and write_signal = '1' then
+        signal_aux <= codec_data_in;
+      end if;
+      if read_signal = '1' and write_signal = '0' then
+        codec_data_out <= signal_aux;
+      end if;
+      valid <= '1';
+    end if;
+  end process;
 end architecture;
