@@ -22,16 +22,19 @@ entity memory is
 end entity;
 architecture dataflow of memory is
   type ram_type is array ((integer'(2) ** addr_width) - 1 downto 0) of std_logic_vector (data_width - 1 downto 0);
-  signal ram_single_port : ram_type;
+  signal mem_single_port : ram_type;
 begin
   process (clock)
   begin
-    if (clock'event and clock = '1') then
+    if falling_edge(clock) then
       if (data_write = '1') then
-        ram_single_port(to_integer(unsigned(data_addr))) <= data_in;
+        mem_single_port(to_integer(unsigned(data_addr))) <= data_in;
       end if;
       if (data_read = '1') then
-        data_out <= ram_single_port(to_integer(unsigned(data_addr)));
+        data_out <= mem_single_port(to_integer(unsigned(data_addr)))
+          & mem_single_port(to_integer(shift_right(unsigned(data_addr), 1)))
+          & mem_single_port(to_integer(shift_right(unsigned(data_addr), 2)))
+          & mem_single_port(to_integer(shift_right(unsigned(data_addr), 3)));
       end if;
     end if;
   end process;
