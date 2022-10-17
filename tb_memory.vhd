@@ -5,26 +5,32 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity tb_memory is
-  generic (
-    ADDR_WIDTH : integer := 2;
-    DATA_WIDTH : integer := 3
-  );
-
-  port (
-    CLOCK_50 : in std_logic;
-    SW : in std_logic_vector(16 downto 0);
-    LEDR : out std_logic_vector(DATA_WIDTH - 1 downto 0)
-  );
 end;
 
 architecture mixed of tb_memory is
+  signal CLOCK : std_logic;
+  signal SW : std_logic_vector(15 downto 0) := (others => '1');
+  signal LEDR : std_logic_vector(31 downto 0);
+  signal data_w, data_r : std_logic;
 begin
   tb_memory : entity work.memory(structural)
     port map(
-      clock => CLOCK_50,
-      data_write => SW(16),
-      data_read => SW(16),
-      data_addr => SW(15 downto 14),
-      data_in => SW(2 downto 0),
+      clock => CLOCK,
+      data_write => data_w,
+      data_read => data_r,
+      data_addr => SW(15 downto 0),
+      data_in => SW(7 downto 0),
       data_out => LEDR);
+  process is
+    variable resultado : std_logic_vector(31 downto 0) := (others => '1');
+  begin
+    CLOCK <= '1', '0' after 1 ns, '1' after 2 ns, '0' after 3 ns;
+    data_w <= '1', '0' after 2 ns;
+    data_r <= '0', '1' after 2 ns;
+
+    wait for 10 ns;
+    assert LEDR = resultado
+    report "Erro!"
+      severity failure;
+  end process;
 end architecture;

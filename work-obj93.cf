@@ -1,10 +1,10 @@
 v 3
-file . "tb_memory.vhd" "20221017002440.000" "20221016202744.133":
-  entity tb_memory at 1( 0) + 0 on 27;
-  architecture mixed of tb_memory at 20( 377) + 0 on 28;
-file . "memory.vhd" "20221016201546.000" "20221016202744.132":
-  entity memory at 1( 0) + 0 on 25;
-  architecture dataflow of memory at 23( 833) + 0 on 26;
-file . "codec.vhd" "20221016234648.000" "20221016202744.132":
-  entity codec at 1( 0) + 0 on 23;
-  architecture dataflow of codec at 18( 482) + 0 on 24;
+file . "codec.vhd" "20221017003256.000" "20221016215045.825":
+  entity codec at 1( 0) + 0 on 125;
+  architecture structural of codec at 18( 482) + 0 on 126;
+file . "memory.vhd" "20221017014716.000" "20221016215045.826":
+  entity memory at 1( 0) + 0 on 127;
+  architecture structural of memory at 23( 837) + 0 on 128;
+file . "tb_memory.vhd" "20221017015042.000" "20221016215045.827":
+  entity tb_memory at 1( 0) + 0 on 129;
+  architecture mixed of tb_memory at 10( 145) + 0 on 130;

@@ -4,8 +4,8 @@ use ieee.numeric_std.all;
 
 entity memory is
   generic (
-    addr_width : natural := 16; -- Memory Address Width (in bits)
-    data_width : natural := 8 -- Data Width (in bits)
+      addr_width : natural := 16; -- Memory Address Width (in bits)
+      data_width : natural := 8 -- Data Width (in bits)
   );
   port (
     clock : in std_logic; -- Clock signal; Write on Falling-Edge
@@ -21,8 +21,8 @@ entity memory is
   );
 end entity;
 architecture structural of memory is
-  type ram_type is array ((integer'(2) ** addr_width) - 1 downto 0) of std_logic_vector (data_width - 1 downto 0);
-  signal mem_single_port : ram_type;
+  type mem_type is array ((integer'(2) ** addr_width) - 1 downto 0) of std_logic_vector (data_width - 1 downto 0);
+  signal mem_single_port : mem_type;
 begin
   process (clock)
   begin
