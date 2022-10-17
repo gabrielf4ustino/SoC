@@ -1,16 +1,10 @@
 v 3
-file . "memory.vhdl" "20221016194650.000" "20221016154710.483":
-  entity memory at 1( 0) + 0 on 59;
-  architecture dataflow of memory at 23( 833) + 0 on 60;
-file . "codec.vhdl" "20221010192246.000" "20221016154710.481":
-  entity codec at 1( 0) + 0 on 55;
-  architecture dataflow of codec at 18( 482) + 0 on 56;
-file . "cpu.vhdl" "20221010192248.000" "20221016154710.482":
-  entity cpu at 1( 0) + 0 on 57;
-  architecture dataflow of cpu at 42( 1589) + 0 on 58;
-file . "soc.vhdl" "20221010192250.000" "20221016154710.483":
-  entity soc at 1( 0) + 0 on 61;
-  architecture dataflow of soc at 13( 259) + 0 on 62;
-file . "tb_memory.vhdl" "20221016192056.000" "20221016154710.483":
-  entity tb_memory at 1( 0) + 0 on 63;
-  architecture mixed of tb_memory at 19( 375) + 0 on 64;
+file . "tb_memory.vhd" "20221017002440.000" "20221016202744.133":
+  entity tb_memory at 1( 0) + 0 on 27;
+  architecture mixed of tb_memory at 20( 377) + 0 on 28;
+file . "memory.vhd" "20221016201546.000" "20221016202744.132":
+  entity memory at 1( 0) + 0 on 25;
+  architecture dataflow of memory at 23( 833) + 0 on 26;
+file . "codec.vhd" "20221016234648.000" "20221016202744.132":
+  entity codec at 1( 0) + 0 on 23;
+  architecture dataflow of codec at 18( 482) + 0 on 24;

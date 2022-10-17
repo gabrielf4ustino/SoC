@@ -1,5 +1,6 @@
 library ieee;
-use ieee.numeric_std.all;library ieee;
+use ieee.numeric_std.all;
+library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
@@ -18,7 +19,7 @@ end;
 
 architecture mixed of tb_memory is
 begin
-    tb_memory : entity work.memory
+  tb_memory : entity work.memory(dataflow)
     port map(
       clock => CLOCK_50,
       data_write => SW(16),
