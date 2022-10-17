@@ -20,7 +20,7 @@ entity memory is
     data_out : out std_logic_vector((data_width * 4) - 1 downto 0)
   );
 end entity;
-architecture dataflow of memory is
+architecture structural of memory is
   type ram_type is array ((integer'(2) ** addr_width) - 1 downto 0) of std_logic_vector (data_width - 1 downto 0);
   signal mem_single_port : ram_type;
 begin

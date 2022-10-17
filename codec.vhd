@@ -15,7 +15,7 @@ entity codec is
     codec_data_out : out std_logic_vector(7 downto 0)
   );
 end entity;
-architecture dataflow of codec is
+architecture structural of codec is
   signal signal_aux : std_logic_vector(7 downto 0);
 begin
   process (interrupt)

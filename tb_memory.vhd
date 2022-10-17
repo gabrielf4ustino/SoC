@@ -19,7 +19,7 @@ end;
 
 architecture mixed of tb_memory is
 begin
-  tb_memory : entity work.memory(dataflow)
+  tb_memory : entity work.memory(structural)
     port map(
       clock => CLOCK_50,
       data_write => SW(16),
