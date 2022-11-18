@@ -1,10 +1,19 @@
 v 3
-file . "codec.vhd" "20221017003256.000" "20221016215045.825":
-  entity codec at 1( 0) + 0 on 125;
-  architecture structural of codec at 18( 482) + 0 on 126;
-file . "memory.vhd" "20221017014716.000" "20221016215045.826":
-  entity memory at 1( 0) + 0 on 127;
-  architecture structural of memory at 23( 837) + 0 on 128;
-file . "tb_memory.vhd" "20221017015042.000" "20221016215045.827":
-  entity tb_memory at 1( 0) + 0 on 129;
-  architecture mixed of tb_memory at 10( 145) + 0 on 130;
+file . "codec.vhd" "20221017003256.000" "20221117223711.761":
+  entity codec at 1( 0) + 0 on 278;
+  architecture structural of codec at 18( 482) + 0 on 279;
+file . "memory.vhd" "20221017014716.000" "20221117223711.764":
+  entity memory at 1( 0) + 0 on 282;
+  architecture structural of memory at 23( 837) + 0 on 283;
+file . "tb_memory.vhd" "20221017020432.000" "20221117223711.765":
+  entity tb_memory at 1( 0) + 0 on 288;
+  architecture mixed of tb_memory at 10( 145) + 0 on 289;
+file . "cpu.vhd" "20221118023708.000" "20221117223711.763":
+  entity cpu at 1( 0) + 0 on 280;
+  architecture behavior of cpu at 43( 1642) + 0 on 281;
+file . "soc.vhd" "20221118022836.000" "20221117223711.765":
+  entity soc at 1( 0) + 0 on 286;
+  architecture structural of soc at 16( 298) + 0 on 287;
+file . "mux.vhd" "20221118020958.000" "20221117223711.764":
+  entity mux at 1( 0) + 0 on 284;
+  architecture behavioral of mux at 15( 266) + 0 on 285;
