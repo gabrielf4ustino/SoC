@@ -32,29 +32,30 @@ architecture structural of soc is
     variable zeros: bit_vector(7 downto 0) := (others => '0');
 
     begin
-        if started = '0' and not endfile(file_readed) then
-            halt <= '1';
-            instruction_read <= '0';
-            instruction_write <= '1';
-            readline(file_readed,line_readed);
-            read(line_readed,instruction);
-            wait for 5 ns;
-            instruction_out <= std_logic_vector(unsigned(to_stdlogicvector(instruction & zeros)));
-            wait for 5 ns;
-            instruction_write <= '0';
-            if not endfile(file_readed) then
-                instruction_addr_opcode_1 <= std_logic_vector(unsigned(instruction_addr_opcode_1) + 1);
+        if falling_edge(clock) then
+            if started = '0' and not endfile(file_readed) then
+                halt <= '1';
+                instruction_read <= '0';
+                instruction_write <= '1';
+                readline(file_readed,line_readed);
+                read(line_readed,instruction);
+                wait for 5 ns;
+                instruction_out <= std_logic_vector(unsigned(to_stdlogicvector(instruction & zeros)));
+                wait for 5 ns;
+                instruction_write <= '0';
+                if not endfile(file_readed) then
+                    instruction_addr_opcode_1 <= std_logic_vector(unsigned(instruction_addr_opcode_1) + 1);
+                end if;
+            elsif started = '1' and endfile(file_readed) then
+                halt <= '1';
+                instruction_read <= '1';
+                instruction_write <= '0';
+                if instruction_addr_opcode_1 /= instruction_addr_opcode_2 then
+                    halt <= '0';
+                end if;
+                wait for 5 ns;
             end if;
-        elsif started = '1' and endfile(file_readed) then
-            halt <= '1';
-            instruction_read <= '1';
-            instruction_write <= '0';
-            if instruction_addr_opcode_1 /= instruction_addr_opcode_2 then
-                halt <= '0';
-            end if;
-            wait for 5 ns;
         end if;
-        wait until falling_edge(clock);
     end process;
     
     mux_instruction_addr: entity work.mux(behavioral)
