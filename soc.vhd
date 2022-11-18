@@ -25,7 +25,7 @@ architecture structural of soc is
 
     begin
     
-    start: process is
+    start: process 
     file file_readed : text open read_mode is firmware_filename;
     variable line_readed: line;
     variable instruction: bit_vector(7 downto 0);
